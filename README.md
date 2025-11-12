@@ -58,7 +58,7 @@ Unlike RateMyProfessors, we focus on:
 | **Kevin Dong** | ked203@pitt.edu | [@thekevindong](https://github.com/thekevindong) | Scrum Master |
 | **Patrick G. Francis** | pgf12@pitt.edu | [@PatrickGFrancis](https://github.com/PatrickGFrancis) | Product Owner |
 | **Xiangyu Li** | xil594@pitt.edu | [@lxingy3](https://github.com/lxingy3) | Developer |
-| **Ya Wei Lin** | yal235@pitt.edu | [@Lin-4136](https://github.com/Lin-4136) | Developer |
+| **Ya Wei Lin** | yal235@pitt.edu | [@Lin-4361](https://github.com/Lin-4361) | Developer |
 | **Sidharth Rajesh** | str114@pitt.edu | [@sid-rajesh](https://github.com/sid-rajesh) | Developer |
 | **Alexander Victoria** | alv175@pitt.edu | [@AlexanderVictoria](https://github.com/AlexanderVictoria) | Developer |
 

@@ -1,5 +1,5 @@
-const Course = require('./Course');
+const Course = require("./Course");
 
 module.exports = {
-  Course
+  Course,
 };

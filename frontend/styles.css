@@ -1,0 +1,974 @@
+/* ============================================
+   CLASSIFY - Clean Styles (No Duplicates)
+   ============================================ */
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  image-rendering: pixelated;
+}
+
+body {
+  font-family: "Press Start 2P", cursive;
+  background: #1a0f2e;
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Pixel background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1a0f2e;
+  background-image: radial-gradient(
+      circle at 20% 30%,
+      rgba(249, 115, 22, 0.1) 0%,
+      transparent 3%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(249, 115, 22, 0.08) 0%,
+      transparent 2%
+    ),
+    radial-gradient(
+      circle at 60% 70%,
+      rgba(249, 115, 22, 0.12) 0%,
+      transparent 3%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 8px,
+      rgba(124, 58, 237, 0.03) 8px,
+      rgba(124, 58, 237, 0.03) 10px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 8px,
+      rgba(124, 58, 237, 0.03) 8px,
+      rgba(124, 58, 237, 0.03) 10px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Navigation */
+nav {
+  background: rgba(26, 15, 46, 0.95);
+  border-bottom: 4px solid #f97316;
+  padding: 1.5rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.2rem;
+  color: #f97316;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #cbd5e1;
+  font-size: 0.6rem;
+  transition: all 0.3s;
+  letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+  color: #f97316;
+}
+
+/* Main Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Page Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  color: #f97316;
+  margin-bottom: 1rem;
+  text-shadow: 3px 3px 0 rgba(124, 58, 237, 0.5);
+  letter-spacing: 3px;
+}
+
+.page-subtitle {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  line-height: 1.8;
+}
+
+/* Search Bar */
+.search-container {
+  margin-bottom: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.search-box {
+  background: rgba(45, 27, 78, 0.8);
+  border: 3px solid #7c3aed;
+  padding: 1rem 2rem;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.7rem;
+  color: #fff;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 4px 4px 0 rgba(124, 58, 237, 0.3);
+  outline: none;
+  text-transform: uppercase;
+}
+
+.search-box:focus {
+  border-color: #f97316;
+  box-shadow: 4px 4px 0 rgba(249, 115, 22, 0.5);
+}
+
+.search-box::placeholder {
+  color: #7c3aed;
+}
+
+/* Spotlight Search Suggestions */
+.spotlight-suggestions {
+  margin: 1.5rem auto 2rem;
+  max-width: 90%;
+  background: rgba(26, 15, 46, 0.6);
+  border: 2px solid rgba(124, 58, 237, 0.4);
+  border-radius: 4px;
+  padding: 1.5rem;
+  display: none;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spotlight-hint {
+  font-size: 0.7rem;
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.spotlight-hint.spotlight-empty {
+  margin-bottom: 0;
+}
+
+.spotlight-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.spotlight-text {
+  line-height: 1.6;
+}
+
+.spotlight-courses {
+  color: #f97316;
+  font-weight: bold;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.65rem;
+}
+
+.spotlight-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.spotlight-item {
+  background: rgba(45, 27, 78, 0.5);
+  border: 2px solid #7c3aed;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.spotlight-item:hover {
+  background: rgba(124, 58, 237, 0.3);
+  border-color: #f97316;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.spotlight-item-code {
+  font-size: 0.75rem;
+  color: #f97316;
+  font-family: "Press Start 2P", cursive;
+  letter-spacing: 1px;
+}
+
+.spotlight-item-name {
+  font-size: 0.6rem;
+  color: #cbd5e1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.4;
+}
+
+.spotlight-more {
+  text-align: center;
+  font-size: 0.6rem;
+  color: #7c3aed;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(124, 58, 237, 0.3);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Department Grid */
+.departments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Info Box */
+.info-box {
+  background: rgba(45, 27, 78, 0.6);
+  border: 3px solid #7c3aed;
+  border-left: 6px solid #f97316;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 4px 4px 0 rgba(124, 58, 237, 0.3);
+}
+
+.info-box-title {
+  font-size: 0.8rem;
+  color: #f97316;
+  margin-bottom: 0.8rem;
+}
+
+.info-box-text {
+  font-size: 0.6rem;
+  color: #cbd5e1;
+  line-height: 1.7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.department-card {
+  background: rgba(45, 27, 78, 0.8);
+  border: 3px solid #7c3aed;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 6px 6px 0 rgba(124, 58, 237, 0.3), 0 0 20px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.department-card:hover {
+  border-color: #f97316;
+  transform: translate(-3px, -3px) scale(1);
+  box-shadow: 9px 9px 0 rgba(249, 115, 22, 0.4),
+    0 0 30px rgba(249, 115, 22, 0.3);
+}
+
+/* Smooth fade out animation for filtered cards */
+.department-card.hiding {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.department-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.department-name {
+  font-size: 0.9rem;
+  color: #f97316;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+}
+
+.department-code {
+  font-size: 0.6rem;
+  color: #7c3aed;
+  margin-bottom: 1rem;
+}
+
+.department-desc {
+  font-size: 0.55rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.course-count {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #f97316;
+  color: #1a0f2e;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.5rem;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 800px;
+  max-height: 85vh;
+  background: #1a0f2e;
+  border: 4px solid #f97316;
+  box-shadow: 8px 8px 0 rgba(124, 58, 237, 0.5),
+    0 0 40px rgba(249, 115, 22, 0.4);
+  z-index: 1001;
+  animation: slideIn 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-large {
+  max-width: 900px;
+  max-height: 90vh;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, -60%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  background: #2d1b4e;
+  border-bottom: 3px solid #7c3aed;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 1rem;
+  color: #f97316;
+  letter-spacing: 2px;
+}
+
+.modal-close {
+  background: transparent;
+  border: 3px solid #f97316;
+  color: #f97316;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  background: #f97316;
+  color: #1a0f2e;
+}
+
+.modal-content {
+  padding: 2rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #2d1b4e;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #7c3aed;
+  border: 2px solid #2d1b4e;
+}
+
+/* Course List */
+.course-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.course-item {
+  background: rgba(45, 27, 78, 0.5);
+  border: 2px solid #7c3aed;
+  padding: 1.5rem;
+  transition: all 0.3s;
+  border-left: 4px solid #f97316;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.course-item:hover {
+  border-color: #f97316;
+  transform: translateX(5px);
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.course-code {
+  font-size: 0.9rem;
+  color: #f97316;
+  font-family: "Press Start 2P", cursive;
+  letter-spacing: 1px;
+}
+
+.course-code-large {
+  font-size: 1.5rem;
+  color: #f97316;
+  margin-bottom: 0.5rem;
+}
+
+.course-level {
+  background: #7c3aed;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.5rem;
+  white-space: nowrap;
+}
+
+.course-name {
+  font-size: 0.7rem;
+  color: #cbd5e1;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.course-name-large {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.course-credits {
+  font-size: 0.6rem;
+  color: #94a3b8;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.course-description {
+  font-size: 0.65rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-top: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.view-details-link {
+  margin-top: 1rem;
+  font-size: 0.6rem;
+  color: #f97316;
+  letter-spacing: 1px;
+}
+
+.no-courses {
+  text-align: center;
+  padding: 3rem;
+  color: #7c3aed;
+  font-size: 0.7rem;
+}
+
+/* Course Detail Sections */
+.detail-section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 0.8rem;
+  color: #f97316;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(249, 115, 22, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.section-content {
+  font-size: 0.7rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Course Info Grid */
+.course-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  background: rgba(124, 58, 237, 0.1);
+  border: 2px solid rgba(124, 58, 237, 0.3);
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.info-label {
+  font-size: 0.55rem;
+  color: #f97316;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-value {
+  font-size: 0.8rem;
+  color: #e2e8f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  background: rgba(124, 58, 237, 0.2);
+  color: #a78bfa;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.6rem;
+  border: 1px solid rgba(124, 58, 237, 0.4);
+}
+
+/* Average Ratings Box */
+.average-ratings-box {
+  background: linear-gradient(
+    135deg,
+    rgba(249, 115, 22, 0.15),
+    rgba(124, 58, 237, 0.15)
+  );
+  border: 2px solid #f97316;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ratings-title {
+  font-size: 0.7rem;
+  color: #f97316;
+  margin-bottom: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.ratings-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.rating-item {
+  background: rgba(26, 15, 46, 0.6);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  text-align: center;
+}
+
+.rating-label {
+  font-size: 0.5rem;
+  color: #cbd5e1;
+  text-transform: uppercase;
+}
+
+.rating-value {
+  font-size: 0.75rem;
+  color: #f97316;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: bold;
+}
+
+/* Professor Cards */
+.professors-list {
+  margin-top: 1.5rem;
+}
+
+.professor-card {
+  background: rgba(45, 27, 78, 0.4);
+  border: 2px solid #7c3aed;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.professor-toggle {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+  font-family: inherit;
+  transition: background 0.3s;
+  gap: 1rem;
+}
+
+.professor-toggle:hover {
+  background: rgba(124, 58, 237, 0.2);
+}
+
+.professor-name {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  flex-shrink: 0;
+}
+
+.professor-review-count {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.toggle-arrow {
+  font-size: 0.8rem;
+  color: #f97316;
+  flex-shrink: 0;
+}
+
+.professor-reviews {
+  padding: 1rem;
+  background: rgba(15, 11, 31, 0.6);
+}
+
+/* Review Items */
+.review-item {
+  background: rgba(45, 27, 78, 0.4);
+  border-left: 3px solid #f97316;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.review-item:last-child {
+  margin-bottom: 0;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  font-size: 0.65rem;
+}
+
+.review-rating {
+  color: #f97316;
+  font-weight: bold;
+}
+
+.review-date {
+  color: #94a3b8;
+}
+
+.review-ratings-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.review-meta {
+  font-size: 0.6rem;
+  color: #cbd5e1;
+  background: rgba(124, 58, 237, 0.2);
+  padding: 0.3rem 0.6rem;
+  border-radius: 2px;
+}
+
+.review-text {
+  font-size: 0.7rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+  max-width: 100%;
+}
+
+.review-timestamp {
+  font-size: 0.55rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.no-reviews {
+  text-align: center;
+  padding: 2rem;
+  color: #7c3aed;
+  font-size: 0.65rem;
+  font-style: italic;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.6rem;
+  color: #f97316;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.form-group select,
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: rgba(45, 27, 78, 0.8);
+  border: 2px solid #7c3aed;
+  padding: 0.8rem;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #f97316;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Star Ratings */
+.rating-group label {
+  display: block;
+  font-size: 0.6rem;
+  color: #f97316;
+  margin-bottom: 0.5rem;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.star-btn {
+  background: transparent;
+  border: none;
+  color: rgba(251, 191, 36, 0.3);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.star-btn:hover,
+.star-btn.active {
+  color: #fbbf24;
+  transform: scale(1.2);
+}
+
+/* Character Count */
+.char-count {
+  text-align: right;
+  font-size: 0.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.25rem;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+/* Buttons */
+.submit-btn,
+.add-review-btn {
+  background: #2d1b4e;
+  border: 3px solid #f97316;
+  padding: 1rem 2rem;
+  color: #fff;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 4px 4px 0 rgba(249, 115, 22, 0.5);
+  letter-spacing: 2px;
+}
+
+.add-review-btn {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.submit-btn:hover,
+.add-review-btn:hover {
+  background: #f97316;
+  color: #1a0f2e;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(249, 115, 22, 0.5);
+}
+
+.cancel-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 1.3rem;
+  }
+  .page-subtitle {
+    font-size: 0.6rem;
+  }
+  .department-name {
+    font-size: 0.7rem;
+  }
+  .nav-links {
+    display: none;
+  }
+  .departments-grid {
+    grid-template-columns: 1fr;
+  }
+  .ratings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .course-info-grid {
+    grid-template-columns: 1fr;
+  }
+  .spotlight-suggestions {
+    max-width: 95%;
+    padding: 1rem;
+  }
+  .spotlight-items {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  .spotlight-hint {
+    font-size: 0.65rem;
+  }
+  .spotlight-courses {
+    font-size: 0.6rem;
+  }
+  .professor-toggle {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .professor-review-count {
+    text-align: left;
+  }
+}

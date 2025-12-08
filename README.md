@@ -40,11 +40,6 @@ Unlike RateMyProfessors, we focus on:
 - 🎯 **Enhanced Data**: Aggregated information from multiple sources for comprehensive insights
 - 📱 **User-Friendly Interface**: Clean, intuitive design for quick decision-making
 
-### Search & Filter Options:
-- Major-specific courses
-- General education requirements
-- Semester availability
-- Rating categories (workload, difficulty, usefulness)
 
 ---
 

@@ -48,6 +48,37 @@ Unlike RateMyProfessors, we focus on:
 
 ---
 
+## Quick Start Guide
+
+### Local Development
+
+1. Clone the repository to local machine
+2. Create `.env` file in [backend](backend)
+    - Copy [.env.example](backend/.env.example) and replace `db_password` with the password `1530Classify`
+3. Install dependencies in [database](database)
+    ```bash
+    cd database
+    npm install
+    cd ..
+    ```
+4. Install dependencies in [backend](backend)
+    ```bash
+    cd backend
+    npm install
+    cd ..
+    ```
+
+5. Run the server
+    ```bash
+    cd backend
+    npm start
+    ```
+
+6. Classify Lnks
+    - Main Page [localhost:5000](http://localhost:5000)
+    - Server [localhost:5000/api/health](http://localhost:5000/api/health)
+---
+
 ## 👥 Team
 
 **Team Name:** Classify  
